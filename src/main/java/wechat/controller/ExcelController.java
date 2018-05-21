@@ -1,0 +1,63 @@
+package wechat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import wechat.module.ExcelModel;
+import wechat.utils.ExcelUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.List;
+
+/**
+ * @Author: Young
+ * @Description:
+ * @Date: Created at 12/20 0020 9:28
+ */
+@Controller
+@RequestMapping(value = "excel")
+public class ExcelController {
+
+
+    /**
+     * 描述：通过传统方式form表单提交方式导入excel文件
+     * @param request
+     * @throws Exception
+     */
+    @RequestMapping(value="upload",method={RequestMethod.GET,RequestMethod.POST})
+    public  String  uploadExcel(HttpServletRequest request) throws Exception {
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+        System.out.println("通过传统方式form表单提交方式导入excel文件！");
+
+        InputStream in =null;
+        List<List<Object>> listob = null;
+        MultipartFile file = multipartRequest.getFile("upfile");
+        if(file.isEmpty()){
+            throw new Exception("文件不存在！");
+        }
+        in = file.getInputStream();
+        listob = new ExcelUtils().getBankListByExcel(in,file.getOriginalFilename());
+        in.close();
+
+        //该处可调用service相应方法进行数据保存到数据库中，现只对数据输出
+        for (int i = 0; i < listob.size(); i++) {
+            List<Object> lo = listob.get(i);
+            ExcelModel vo = new ExcelModel();
+            vo.setCode(String.valueOf(lo.get(0)));
+            vo.setName(String.valueOf(lo.get(1)));
+            vo.setDate(String.valueOf(lo.get(2)));
+            vo.setMoney(String.valueOf(lo.get(3)));
+
+            System.out.println("打印信息-->机构:"+vo.getCode()+"  名称："+vo.getName()+"   时间："+vo.getDate()+"   资产："+vo.getMoney());
+        }
+        return "result";
+    }
+
+
+}
