@@ -20,9 +20,11 @@ import java.util.Scanner;
  */
 public class Client {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         try {
+            Scanner scanner = new Scanner(System.in);
+
             Socket socket = new Socket("127.0.0.1", 8888);
+
             InputStream is = socket.getInputStream();
             OutputStream os = socket.getOutputStream();
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
@@ -33,9 +35,7 @@ public class Client {
 
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line = br.readLine();
-            System.out.println("服务器:" + line);
-
-
+            System.out.println("服务器: " + line);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -21,14 +21,16 @@ public class Server {
         try {
             ServerSocket serverSocket = new ServerSocket(8888);
             System.out.println("启动服务器...");
-            Socket socket = serverSocket.accept();
-            System.out.println("客户端" + socket.getInetAddress().getHostAddress() + "已连接到服务器...");
-            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String line = br.readLine();
-            System.out.println("客户端:" + line);
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            bw.write(line + "\n");
-            bw.flush();
+            while(true){
+                Socket socket = serverSocket.accept();
+                System.out.println("客户端" + socket.getInetAddress().getHostAddress() + "已连接到服务器...");
+                BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String line = br.readLine();
+                System.out.println("客户端: " + line);
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                bw.write(line + "\n");
+                bw.flush();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
