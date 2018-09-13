@@ -23,20 +23,26 @@ public class Client {
         try {
             Scanner scanner = new Scanner(System.in);
 
-            Socket socket = new Socket("127.0.0.1", 8888);
+            while (true){
+                Socket socket = new Socket("127.0.0.1", 8888);
 
-            InputStream is = socket.getInputStream();
-            OutputStream os = socket.getOutputStream();
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
-            System.out.println("请输入消息：");
-            String meg = scanner.next();
-            bw.write(meg + "\n");
-            bw.flush();
+                InputStream is = socket.getInputStream();
+                OutputStream os = socket.getOutputStream();
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
+                System.out.println("请输入消息：");
+                String meg = scanner.next();
+                bw.write(meg + "\n");
+                bw.flush();
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String line = br.readLine();
-            System.out.println("服务器: " + line);
-
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                String line = br.readLine();
+                System.out.println("服务器: " + line);
+                os.close();
+                is.close();
+                br.close();
+                bw.close();
+                socket.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

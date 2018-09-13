@@ -1,13 +1,13 @@
 package designPattern.DateTest;
 
 
-import org.apache.poi.ss.formula.functions.T;
-import org.omg.CORBA.Current;
-
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: Young
@@ -17,10 +17,10 @@ import java.util.Date;
 public class DateTest {
 
     public static void main(String[] args) {
-        formatDateTest();
+        System.out.println(compStr());
     }
 
-    public static void formatDateTest(){
+    public static void formatDateTest() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
         Date d = new Date();
         Timestamp ts = new Timestamp(System.currentTimeMillis());
@@ -37,7 +37,7 @@ public class DateTest {
     }
 
 
-    public void calendarDemo(){
+    public void calendarDemo() {
         Calendar calendar = new Calendar() {
             @Override
             protected void computeTime() {
@@ -81,7 +81,7 @@ public class DateTest {
         };
     }
 
-    public static void formatDemo(){
+    public static void formatDemo() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
@@ -90,7 +90,7 @@ public class DateTest {
         System.out.println("calendar : " + calendar.getTime());
     }
 
-    public static void CalendarTest(){
+    public static void CalendarTest() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2017, 9, 22, 15, 51, 30);
         System.out.println(timeConvert(calendar.getTime()));
@@ -99,16 +99,39 @@ public class DateTest {
         System.out.println(calendar.getTime().getClass().getName());
     }
 
-    public static void DateDemo(){
+    public static void DateDemo() {
         Date date = new Date();
         date.setTime(System.currentTimeMillis());
         System.out.println(timeConvert(date));
     }
 
-    public static String timeConvert(Date date){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/hh E HH:mm:ss");
+    public static String timeConvert(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
         String str = sdf.format(date);
+        try {
+            Date d = sdf.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return str;
+    }
+
+    public static int compInt() {
+        int[] ints = {-44, -2, 1, 2, 10, 30, 3, 4, 5};
+        int max = 0;
+        for (int i = 0; i < ints.length; i++) {
+            max = (max >= ints[i] ? max : ints[i]);
+        }
+        return max;
+    }
+
+    public static String compStr() {
+        String[] strings = {"d","a","d","e","E"};
+        String max = "";
+        for (int i = 0; i < strings.length; i++) {
+            max = (max.compareTo(strings[i]) == 1 ? max : strings[i]);
+        }
+        return max;
     }
 
 }

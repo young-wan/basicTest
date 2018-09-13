@@ -14,8 +14,9 @@ public class FactoryTest {
 //        Sender sender = factorySender.multipleMail();      多个工厂模式
 //        Sender sender = FactorySender.staticMail();          静态工厂模式
 //        sender.Sender();
-        Provider provider = new SmsFactory();
+        Provider provider = new MailFactory();
         Sender sender = provider.produce();
         sender.Sender();
+
     }
 }

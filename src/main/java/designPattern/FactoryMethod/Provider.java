@@ -6,5 +6,5 @@ package designPattern.FactoryMethod;
  * @Date: Created at 9/21 0021 14:47
  */
 public interface Provider {
-    public Sender produce();
+    Sender produce();
 }

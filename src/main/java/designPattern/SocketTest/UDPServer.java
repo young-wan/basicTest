@@ -20,7 +20,7 @@ public class UDPServer {
         byte[] recieveData = new byte[1024];
         DatagramPacket serverPacket = new DatagramPacket(recieveData, recieveData.length);
         serverSocket.receive(serverPacket);
-        String clientMsg = new String(recieveData, 0, serverPacket.getLength());
+        String clientMsg = new String(recieveData, 0, serverPacket.getLength(), "UTF-8");
         System.out.println("客户端说: " + clientMsg);
 
         byte[] serverData = "欢迎你,客户端!".getBytes();

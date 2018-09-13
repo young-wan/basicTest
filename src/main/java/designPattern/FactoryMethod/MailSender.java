@@ -8,6 +8,7 @@ import designPattern.FactoryMethod.Sender;
  * @Date: Created at 9/21 0021 13:53
  */
 public class MailSender implements Sender {
+    @Override
     public void Sender() {
         System.out.println("this is mailsend!");
     }

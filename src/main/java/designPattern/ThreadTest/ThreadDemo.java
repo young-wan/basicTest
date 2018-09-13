@@ -8,16 +8,13 @@ package designPattern.ThreadTest;
 public class ThreadDemo {
     public static void main(String[] args) {
         Thread thread = new Thread();
-        System.out.println("current thread : " + thread);
-        System.out.println("current thread : " + thread.getName());
-        System.out.println("current thread : " + thread.currentThread());
-        for (int i = 0; i < 5; i++){
-            System.out.println(i);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        thread.start();
+        thread.run();
+//        thread.stop();
+        int i = 0;
+        while (thread.isAlive() && i < 5){
+            System.out.println("线程进行中..." + i);
+            i++;
         }
     }
 }

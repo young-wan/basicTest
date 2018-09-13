@@ -15,7 +15,7 @@ import java.net.InetAddress;
  */
 public class UDPClient {
     public static void main(String[] args) throws IOException {
-        byte[] clientData = "你好,服务器,我是客户端!".getBytes();
+        byte[] clientData = "你好,服务器,我是客户端!".getBytes("UTF-8");
         InetAddress serverAddress = InetAddress.getByName("localhost");
         int port = 8001;
         DatagramPacket clientPacket = new DatagramPacket(clientData, clientData.length, serverAddress, port);
