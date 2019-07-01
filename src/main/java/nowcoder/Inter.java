@@ -7,7 +7,5 @@ package nowcoder;
  * @date: Created at 1/26 0026 11:51
  */
 public interface Inter {
-    public static void test(){
 
-    };
 }

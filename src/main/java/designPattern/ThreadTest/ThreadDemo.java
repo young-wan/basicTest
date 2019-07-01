@@ -9,23 +9,22 @@ package designPattern.ThreadTest;
 public class ThreadDemo {
 
     class Bank {
-        private int account = 100;
+        private Integer account = 100;
 
-        public int getAccount() {
-            return this.account;
+        public Integer getAccount() {
+            return account;
         }
 
-        public synchronized void saveMeth(int money) {
+        public void save(Integer money) {
             this.account += money;
         }
 
-        public void saveBlock(int money) {
+        public void save2(Integer money) {
             synchronized (this) {
                 this.account += money;
             }
         }
     }
-
 
     class NewThread implements Runnable {
         private Bank bank;
@@ -36,10 +35,9 @@ public class ThreadDemo {
 
         @Override
         public void run() {
-            for (int i = 0; i < 10; i++) {
-//                bank.saveMeth(10);
-                bank.saveBlock(10);
-                System.out.println(i + "账户余额为: " + bank.getAccount());
+            for (int i = 0; i < 30; i++) {
+                bank.save(10);
+                System.out.println(i + " 当前账户余额为: " + bank.getAccount());
             }
         }
     }
@@ -47,18 +45,24 @@ public class ThreadDemo {
     public void useThread() {
         Bank bank = new Bank();
         NewThread nt = new NewThread(bank);
-        System.out.println("线程1-----------");
+        System.out.println("线程1------------");
         Thread thread1 = new Thread(nt);
         thread1.start();
-        ;
-
-        System.out.println("线程2-----------");
+        System.out.println("线程2------------");
         Thread thread2 = new Thread(nt);
         thread2.start();
     }
 
+
     public static void main(String[] args) {
-        ThreadDemo td = new ThreadDemo();
-        td.useThread();
+//        ThreadDemo td = new ThreadDemo();
+//        td.useThread();
+
+        double sum = 0;
+        for (int i = 1; i <= 30; i++) {
+            sum += Math.pow(2, i - 1) * 0.01;
+            System.out.println(Math.pow(2, i - 1) * 0.01);
+        }
+        System.out.println(sum);
     }
 }
