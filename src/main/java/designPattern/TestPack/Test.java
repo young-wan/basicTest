@@ -1,7 +1,5 @@
 package designPattern.TestPack;
 
-import designPattern.MathCountTest.QuickSort;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,30 +10,38 @@ import java.util.List;
  * @date: Created at 6/11 0011 10:15
  */
 public class Test {
+    private int count;
+
+    private String name;
+
     public static void main(String[] args) {
-//        System.out.println(-1 % 10);
-//
-//        int count = 2222;
-//
-//        int[] cards = randCreate(count);
-//        QuickSort sort = new QuickSort();
-//        sort.sort(cards, 0, count - 1);
-//        System.out.println(cards[cards.length / 2]);
-//
-//        int number = 4324;
-//        StringBuffer sb = new StringBuffer();
-//        for (int i = 0; i < 32; i++) {
-//            sb.append(number & 1);
-//            number = number >>> 1;
-//        }
-//        String a = sb.toString();
-//
-//        System.out.println(a.charAt(0));
+        int c = 7;
+        String n = "name";
+        foo(c);
+        foo(n);
+        StringBuffer sb = new StringBuffer("aaa");
+        foo(sb);
+        StringBuffer sb2 = new StringBuffer("aaa");
+        foo2(sb2);
+        System.out.println(c);
+        System.out.println(n);
+        System.out.println(sb);
+        System.out.println(sb2);
+    }
 
-        for (int i = 0; i < 20; i++){
-            System.out.println(randTo10());
-        }
+    private static void foo(int i) {
+        i = 100;
+    }
 
+    private static void foo(String s) {
+        s = "hello";
+    }
+
+    private static void foo(StringBuffer sb){
+        sb.append("1111");
+    }
+    private static void foo2(StringBuffer sb){
+        sb = new StringBuffer("333");
     }
 
     /**
@@ -67,7 +73,7 @@ public class Test {
 
     private static Integer randTo10() {
         int number = 49;
-        while (number > 45){
+        while (number > 45) {
             number = randNumber(7) * randNumber(7);
         }
         return number % 9 + 1;

@@ -1,7 +1,5 @@
 package designPattern.ChatAppDemo;
 
-import org.apache.log4j.Logger;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +8,6 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.util.logging.Level;
 
 /**
  * @title: wechat-service

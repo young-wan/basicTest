@@ -36,7 +36,7 @@ public class ThreadDemo {
         @Override
         public void run() {
             for (int i = 0; i < 30; i++) {
-                bank.save(10);
+                bank.save2(10);
                 System.out.println(i + " 当前账户余额为: " + bank.getAccount());
             }
         }
@@ -55,14 +55,8 @@ public class ThreadDemo {
 
 
     public static void main(String[] args) {
-//        ThreadDemo td = new ThreadDemo();
-//        td.useThread();
+        ThreadDemo td = new ThreadDemo();
+        td.useThread();
 
-        double sum = 0;
-        for (int i = 1; i <= 30; i++) {
-            sum += Math.pow(2, i - 1) * 0.01;
-            System.out.println(Math.pow(2, i - 1) * 0.01);
-        }
-        System.out.println(sum);
     }
 }

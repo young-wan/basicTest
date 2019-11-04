@@ -1,7 +1,6 @@
 package designPattern.MathCountTest;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -11,6 +10,38 @@ import java.util.List;
  * @date: Created at 6/12 0012 15:40
  */
 public class QuickSort {
+    static {
+        QuickSort qs = new QuickSort();
+        qs.setKey("static set key");
+        String a = qs.key;
+        System.out.println(a);
+    }
+
+    private String key;
+
+    private String value;
+
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
 
     public void sort(int arr[], int min, int max) {
         int l = min;
@@ -25,7 +56,7 @@ public class QuickSort {
                 h--;
             }
             if (l < h) {
-                //  当找到比point小的数时,将该数和i交换;
+                //  当找到比point小的数时,将该数和l交换;
                 arr[l] = arr[h];
                 l++;
             }

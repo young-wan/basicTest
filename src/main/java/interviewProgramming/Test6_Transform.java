@@ -30,14 +30,14 @@ public class Test6_Transform {
     }
 
     public static int[][] transformImage(int[][] mat, int n) {
-        //  使用缓存矩阵
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print(mat[i][j]);
-            }
-            System.out.println();
-        }
-        return mat;
+//        //  使用缓存矩阵
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                System.out.print(mat[i][j]);
+//            }
+//            System.out.println();
+//        }
+//        return mat;
 
         //  不使用缓存矩阵
         //  1.按次对角线(右上->左下)交换

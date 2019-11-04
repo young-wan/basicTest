@@ -1,10 +1,6 @@
 package w3c_school.elementaryTest;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @title: notice-service
@@ -21,8 +17,6 @@ public class Test {
     }
 
     public static void reverseTest(String str){
-        List<String> list = new ArrayList<String>();
-        list = Arrays.asList(str.split(","));
-        System.out.println(StringUtils.reverse(str));
+        int i = HttpServletResponse.SC_OK;
     }
 }
