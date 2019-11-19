@@ -7,17 +7,36 @@ package nowcoder;
  * @date: Created at 2019/10/18 9:34
  */
 public class Shape {
-    static {
-        System.out.println("shape static ============");
+
+    private int i;
+    private Integer k;
+
+    public Shape() {
+
     }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public Integer getK() {
+        return k;
+    }
+
+    public void setK(Integer k) {
+        this.k = k;
+    }
+
     private String name;
 
     private String type;
 
-    public Shape() {
-        System.out.println("shape construct-----------");
-    }
-    private void pr(){
+
+    private void pr() {
         System.out.println("shape---pr");
     }
 
@@ -47,10 +66,6 @@ public class Shape {
     }
 
     public static void main(String[] args) {
-        Shape circle = new Circle();
-        circle.print(circle);
-        circle.pr();
-        Shape triangle = new Triangle();
-        triangle.print(triangle);
+
     }
 }
