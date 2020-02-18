@@ -1,6 +1,9 @@
 package nowcoder;
 
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @title: demo
  * @author: Young
@@ -27,9 +30,11 @@ public class Book {
     }
 
     public static void main(String[] args) {
-        Book book = new Book("1");
-        book.genTest(1);
-        book.genTest("11");
+        List<String> list = new LinkedList<>();
+        list.add("");
+        list.add("");
+        list.add("sss");
+        System.out.println(list);
 //        Book[] book1 = new Book[5];
 //        Book[] book2 = new Book[5];
 //        String[] str1 = new String[5];

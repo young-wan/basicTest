@@ -66,6 +66,11 @@ public class Shape {
     }
 
     public static void main(String[] args) {
-
+        System.out.println(Math.round(-1.1));
     }
+
+    public final void ttt(){
+        System.out.println("ttt");
+    }
+
 }
