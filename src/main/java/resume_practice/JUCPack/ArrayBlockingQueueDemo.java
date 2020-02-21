@@ -1,4 +1,4 @@
-package resume_practice;
+package resume_practice.JUCPack;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -12,8 +12,11 @@ import java.util.concurrent.TimeUnit;
 public class ArrayBlockingQueueDemo {
 
     public static void main(String[] args) {
-        offerPullDelay();
-
+//        offerPullDelay();
+ long totalMemory = Runtime.getRuntime().totalMemory();
+ long maxMemory = Runtime.getRuntime().maxMemory();
+        System.out.println(totalMemory/1024/1024);
+        System.out.println(maxMemory/1024/1024);
 
     }
 

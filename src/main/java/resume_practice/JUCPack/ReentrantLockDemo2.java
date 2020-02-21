@@ -1,4 +1,4 @@
-package resume_practice;
+package resume_practice.JUCPack;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
