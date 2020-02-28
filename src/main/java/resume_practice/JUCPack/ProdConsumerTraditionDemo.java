@@ -17,7 +17,6 @@ class MyData {
 
 
     public void increment() {
-
         try {
             lock.lock();
             while (number != 0) {
@@ -56,7 +55,12 @@ public class ProdConsumerTraditionDemo {
 
     public static void main(String[] args) {
         System.out.println(Runtime.getRuntime().availableProcessors());
-//        MyData myData = new MyData();
+        MyData myData = new MyData();
+        try {
+            myData.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 //        new Thread(() -> {
 //            for (int i = 1; i <= 5; i++) {
 //                myData.increment();

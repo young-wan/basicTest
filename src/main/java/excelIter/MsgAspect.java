@@ -18,7 +18,7 @@ public class MsgAspect {
 
     @Pointcut("@annotation(MsgInter)")
     public void msgOnly() {
-
+        System.out.println("msgOnly---");
     }
 
     @Before("msgOnly()")

@@ -29,6 +29,7 @@ public class ThreadPoolDemo {
                 new ThreadPoolExecutor.CallerRunsPolicy()
         );
 
+
         try {
             for (int i = 1; i <= 16; i++) {
                 threadPool.execute(() -> {
@@ -36,6 +37,7 @@ public class ThreadPoolDemo {
                 });
             }
         } catch (Exception e) {
+
             e.printStackTrace();
         } finally {
             threadPool.shutdown();
