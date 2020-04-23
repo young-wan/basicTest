@@ -1,4 +1,4 @@
-package resume_practice.JUCPack;
+package JUCPack;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

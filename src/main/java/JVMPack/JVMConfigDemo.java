@@ -1,4 +1,4 @@
-package resume_practice.JVMPack;
+package JVMPack;
 
 /**
  * @title: demo

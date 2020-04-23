@@ -1,7 +1,12 @@
 package excelIter;
 
-import org.springframework.context.annotation.aspectj.EnableSpringConfigured;
-import org.springframework.stereotype.Service;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Consumer;
+import com.rabbitmq.client.DefaultConsumer;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @title: demo
@@ -9,16 +14,17 @@ import org.springframework.stereotype.Service;
  * @desc: demo
  * @date: Created at 2019/12/04 19:57
  */
-@Service
-@EnableSpringConfigured
+@ComponentScan("excelIter")
+@Configuration
+@EnableAspectJAutoProxy
 public class MsgTest {
 
-    @MsgInter
-    public static void test() {
-        System.out.println("start  test ----");
-    }
 
     public static void main(String[] args) {
-        test();
+        Channel channel = null;
+        Consumer consumer = new DefaultConsumer(channel);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(MsgTest.class);
+        MsgService msgService = ac.getBean(MsgService.class);
+        msgService.test();
     }
 }

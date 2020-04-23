@@ -1,6 +1,7 @@
 package excelIter;
 
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MsgAspect {
 
-    @Pointcut("@annotation(MsgInter)")
+    @Pointcut("execution(* excelIter.MsgService.*(..))")
     public void msgOnly() {
         System.out.println("msgOnly---");
     }
@@ -29,5 +30,10 @@ public class MsgAspect {
     @After("msgOnly()")
     public void afterOnly() {
         System.out.println("after----");
+    }
+
+    @Around("msgOnly()")
+    public void aroundOnlhy(){
+        System.out.println("around ---");
     }
 }

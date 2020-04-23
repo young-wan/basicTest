@@ -1,4 +1,4 @@
-package resume_practice.JVMPack;
+package JVMPack;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;

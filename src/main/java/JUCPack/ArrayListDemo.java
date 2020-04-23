@@ -1,4 +1,4 @@
-package resume_practice.JUCPack;
+package JUCPack;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package resume_practice.JUCPack;
+package JUCPack;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

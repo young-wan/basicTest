@@ -1,10 +1,9 @@
 package w3c_school.elementaryTest;
 
-import javax.servlet.http.HttpServletResponse;
+import java.time.Instant;
 
 /**
  * @title: notice-service
- * @copyright: Copyright © 2017-2020 汉博德信息技术有限公司 All Rights Reserved
  * @company: http://www.hanboard.com
  * @author: Young
  * @desc: 通知公告
@@ -12,11 +11,36 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Test {
     public static void main(String[] args) {
-        reverseTest("hello");
+
+        Instant instant = Instant.now();
+        System.out.println(instant);
+        System.out.println(instant.getNano());
+        System.out.println(instant.toEpochMilli());
 
     }
 
-    public static void reverseTest(String str){
-        int i = HttpServletResponse.SC_OK;
+}
+
+class TT {
+
+//    boolean isLive;
+//    boolean live;
+    Integer isLive;
+    int live;
+
+    public Integer getIsLive() {
+        return isLive;
+    }
+
+    public void setIsLive(Integer isLive) {
+        this.isLive = isLive;
+    }
+
+    public int getLive() {
+        return live;
+    }
+
+    public void setLive(int live) {
+        this.live = live;
     }
 }

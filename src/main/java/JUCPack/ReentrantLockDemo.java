@@ -1,4 +1,4 @@
-package resume_practice.JUCPack;
+package JUCPack;
 
 /**
  * @title: demo
