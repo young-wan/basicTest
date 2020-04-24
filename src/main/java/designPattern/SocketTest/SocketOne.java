@@ -16,11 +16,9 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * @title: moral-edu-service
- * @copyright: Copyright © 2017-2020 汉博德信息技术有限公司 All Rights Reserved
- * @company: http://www.hanboard.com
+
  * @author: Young
- * @desc: 德育系统
+ * @desc:
  * @date: Created at 5/21 0021 15:48
  */
 public class SocketOne {

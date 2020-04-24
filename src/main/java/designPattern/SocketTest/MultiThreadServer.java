@@ -6,16 +6,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * @title: moral-edu-service
- * @copyright: Copyright © 2017-2020 汉博德信息技术有限公司 All Rights Reserved
- * @company: http://www.hanboard.com
  * @author: Young
- * @desc: 德育系统
+ * @desc:
  * @date: Created at 5/21 0021 16:53
  */
-public class MultiThreadServer  implements Runnable {
+public class MultiThreadServer implements Runnable {
     Socket csocket;
-    MultiThreadServer (Socket csocket){
+
+    MultiThreadServer(Socket csocket) {
         this.csocket = csocket;
     }
 
@@ -23,10 +21,10 @@ public class MultiThreadServer  implements Runnable {
         try {
             ServerSocket serverSocket = new ServerSocket(1234);
             System.out.println("start listening...");
-            while (true){
+            while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("connected");
-                new Thread(new MultiThreadServer (socket)).start();
+                new Thread(new MultiThreadServer(socket)).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,8 +41,7 @@ public class MultiThreadServer  implements Runnable {
             }
             pstream.close();
             csocket.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e);
         }
     }

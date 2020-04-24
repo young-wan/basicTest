@@ -1,58 +1,47 @@
 package designPattern.SocketTest;
 
-import com.google.common.base.Strings;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @title: moral-edu-service
- * @copyright: Copyright © 2017-2020 汉博德信息技术有限公司 All Rights Reserved
- * @company: http://www.hanboard.com
  * @author: Young
- * @desc: 德育系统
+ * @desc:
  * @date: Created at 5/21 0021 17:47
  */
 public class Server {
     public static void main(String[] args) {
+        startServer();
+    }
+
+    public static void startServer() {
+        int port = 7777;
         try {
-            ServerSocket serverSocket = new ServerSocket(8888);
+            ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("启动服务器...");
             Scanner scanner = new Scanner(System.in);
-            while(true){
+            while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("客户端" + socket.getInetAddress().getHostAddress() + "已连接到服务器...");
-                InputStream is = socket.getInputStream();
-                OutputStream os = socket.getOutputStream();
-//
-//                byte[] bytes = new byte[1024];
-//                int len;
-//                while ((len = is.read(bytes)) != -1){
-//                    System.out.println("print: " + new String(bytes, 0, len));
-//                }
-//                os.write(("hello, i get msg : " + new String(bytes, 0, len)).getBytes());
-
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                String line = br.readLine();
-                System.out.println("客户端: " + line);
-                String res = scanner.next();
-                BufferedWriter bw;
-                if (!Strings.isNullOrEmpty(res)){
-                    bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                    bw.write(res + "\n");
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                String clientInfo = br.readLine();
+                String sendInfo = scanner.next();
+                if (StringUtils.isNotBlank(sendInfo)) {
+                    // 一定要加 \n 表示结束此行输入,否则无法正常消息传输
+                    bw.write(sendInfo + "\n");
                     bw.flush();
-                    bw.close();
                 }
-                br.close();
-                socket.close();
+                if (StringUtils.isNotBlank(clientInfo)) {
+                    System.out.println("客户端说: " + clientInfo);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
