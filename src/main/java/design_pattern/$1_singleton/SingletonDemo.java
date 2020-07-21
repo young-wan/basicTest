@@ -16,6 +16,12 @@ public class SingletonDemo {
         } else {
             System.out.println("不是同一人");
         }
+        // 多线程下的异常
+//        for (int i = 0; i < 100; i++){
+//            new Thread(()->{
+//                President.getInstance();
+//            }).start();
+//        }
     }
 
 }

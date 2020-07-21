@@ -226,11 +226,13 @@
       <version>5.2.5.RELEASE</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
     <dependency>
       <groupId>redis.clients</groupId>
       <artifactId>jedis</artifactId>
-      <version>2.1.0</version>
+      <version>3.3.0</version>
     </dependency>
+
 
 
 

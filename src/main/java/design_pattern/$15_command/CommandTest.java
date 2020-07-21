@@ -17,7 +17,7 @@ public class CommandTest {
 
 //抽象命令
 interface Command {
-    abstract void execute();
+    void execute();
 }
 
 //调用者

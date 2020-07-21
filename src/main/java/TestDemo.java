@@ -12,46 +12,27 @@ import java.util.Arrays;
 public class TestDemo {
 
     public static void main(String[] args) {
-//        Snowflake snowflake = new Snowflake();
-//        for (int i = 0; i < 10; i++) {
-//            System.out.println(snowflake.snowFlakeGenerate());
-//        }
-        int[] ints = new int[]{1, 2, 3};
-//        int[] ints2 = ints;
-//        ints2[1] = 11;
-//        System.out.println(ints[1]);
-//        System.out.println(sqrt(4));
-        changeInt(ints);
-        int i = 1;
-        changeInt(i);
-        System.out.println(ints[1]);
-        System.out.println(i);
-    }
 
-    /**
-     * 计算平方根（牛顿迭代法）
-     *
-     * @param c
-     * @return
-     */
-    public static double sqrt(double c) {
-        if (c < 0) {
-            return Double.NaN;
+//        System.out.println(recurse(8));
+        System.out.println(rabbit(12));
+
+    }
+//1、1、2、3、5、8、13、21.....
+    public static int recurse(int i){
+        if (i == 1 || i == 2){
+            return 1;
         }
-        double err = 1e-15;
-        double t = c;
-        while (Math.abs(t - c / t) > err * t) {
-            t = (c / t + t) / 2.0;
+        return recurse(i - 1) + recurse(i - 2);
+    }
+
+//    第二题：一般而言，兔子在出生两个月后，就有繁殖能力，一对兔子每个月能生出一对小兔子来。如果所有兔子都不死，那么一年以后可以繁殖多少对兔子？
+
+//    1 1 2 3 5
+    public static int rabbit(int month){
+        if (month < 2){
+            return 1;
         }
-        return t;
-    }
+        return rabbit(month - 1) + rabbit(month - 2);
 
-    public static void changeInt(int[] ints){
-        ints[1] = 11;
     }
-
-    public static void changeInt(int i){
-        i = 11;
-    }
-
 }

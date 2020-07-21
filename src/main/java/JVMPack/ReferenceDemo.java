@@ -4,6 +4,7 @@ import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.Objects;
 import java.util.WeakHashMap;
 
 /**
@@ -14,27 +15,29 @@ import java.util.WeakHashMap;
  */
 public class ReferenceDemo {
     public static void main(String[] args) {
-        Object o1 = new Object();
-        ReferenceQueue referenceQueue = new ReferenceQueue();
-        WeakReference weakReference = new WeakReference(o1, referenceQueue);
-
-        System.out.println(o1);
-        System.out.println(weakReference.get());
-        System.out.println(referenceQueue.poll());
-
-        o1 = null;
-        System.gc();
-
-//        try {
-//            Thread.sleep(500);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        System.out.println("====================");
-
-        System.out.println(o1);
-        System.out.println(weakReference.get());
-        System.out.println(referenceQueue.poll());
+//        Object o1 = new Object();
+//        ReferenceQueue referenceQueue = new ReferenceQueue();
+//        WeakReference weakReference = new WeakReference(o1, referenceQueue);
+//        Object o2 = o1;
+//        System.out.println(o1);
+//        System.out.println(weakReference.get());
+//        System.out.println(referenceQueue.poll());
+//
+//        o1 = null;
+//        System.gc();
+//
+////        try {
+////            Thread.sleep(500);
+////        } catch (InterruptedException e) {
+////            e.printStackTrace();
+////        }
+//        System.out.println("====================");
+//
+//        System.out.println(o1);
+//        System.out.println(o2);
+//        System.out.println(weakReference.get());
+//        System.out.println(referenceQueue.poll());
+        phanRefQueue();
     }
 
     private static void phanRefQueue() {
