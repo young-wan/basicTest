@@ -61,16 +61,16 @@ public class ProdConsumerTraditionDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        new Thread(() -> {
-//            for (int i = 1; i <= 5; i++) {
-//                myData.increment();
-//            }
-//        }, "A").start();
-//        new Thread(() -> {
-//            for (int i = 1; i <= 5; i++) {
-//                myData.decrement();
-//            }
-//        }, "B").start();
+        new Thread(() -> {
+            for (int i = 1; i <= 5; i++) {
+                myData.increment();
+            }
+        }, "A").start();
+        new Thread(() -> {
+            for (int i = 1; i <= 5; i++) {
+                myData.decrement();
+            }
+        }, "B").start();
     }
 
 

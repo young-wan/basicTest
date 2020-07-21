@@ -19,7 +19,7 @@ class MyCache {
         lock.writeLock().lock();
         System.out.println(Thread.currentThread().getName() + "\t 正在写入 : " + key);
         try {
-            TimeUnit.MICROSECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -32,7 +32,7 @@ class MyCache {
         lock.readLock().lock();
         System.out.println(Thread.currentThread().getName() + "\t 正在读取---------");
         try {
-            TimeUnit.MICROSECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

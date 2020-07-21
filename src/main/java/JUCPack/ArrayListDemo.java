@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ArrayListDemo {
 
     public static void main(String[] args) {
-        List<String> list = notSafeList();
+        List<String> list = synchronizedList();
         for (int i = 0; i < 30; i++) {
             new Thread(() -> {
                 list.add(UUID.randomUUID().toString());

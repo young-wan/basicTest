@@ -24,14 +24,14 @@ public class ThreadPoolDemo {
                 count + 1,
                 1,
                 TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(3),
+                new LinkedBlockingQueue(5),
                 Executors.defaultThreadFactory(),
                 new ThreadPoolExecutor.CallerRunsPolicy()
         );
 
 
         try {
-            for (int i = 1; i <= 16; i++) {
+            for (int i = 1; i <= 30; i++) {
                 threadPool.execute(() -> {
                     System.out.println(Thread.currentThread().getName() + "\t 处理业务" + atomicInteger.incrementAndGet());
                 });

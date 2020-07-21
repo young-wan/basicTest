@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * @desc: demo
  * @date: Created at 2020/02/18 10:55
  */
-class User{
+class User {
     private Integer id;
 
     private String name;
@@ -18,6 +18,7 @@ class User{
         this.name = name;
     }
 }
+
 public class AtomicReferenceDemo {
 
 
@@ -27,7 +28,7 @@ public class AtomicReferenceDemo {
         AtomicReference<User> atomicReference = new AtomicReference<User>();
         atomicReference.set(user1);
 
-        System.out.println(atomicReference.compareAndSet(user1, user2)+  atomicReference.get().toString());
+        System.out.println(atomicReference.compareAndSet(user1, user2) + atomicReference.get().toString());
         System.out.println(atomicReference.compareAndSet(user1, user2) + atomicReference.get().toString());
     }
 }
