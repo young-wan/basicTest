@@ -12,11 +12,11 @@ public class Snowflake {
 
     // 定义各部分占位
     // 序列号占位
-    private static final long SEQUENCE_BIT = 12L;
+    private static final long SEQUENCE_BIT = 4L;
     // 机器码占位
-    private static final long MACHINE_BIT = 5L;
+    private static final long MACHINE_BIT = 1L;
     // 数据中心占位
-    private static final long DATA_CENTER_BIT = 5L;
+    private static final long DATA_CENTER_BIT = 1L;
 
     // 定义对应占位部分最大数
     // -1L ^ (-1L << X)  等价于 (1L << X) - 1  等价于  ~(-1L << X)
@@ -61,8 +61,8 @@ public class Snowflake {
         }
         // 定义上一次使用的时间戳
         lastStamp = curTimeMills;
-        return (curTimeMills - START_STAMP)
-                << TIMESTAMP_LEFT                             //时间戳部分
+        // "|" 表示数字相加
+        return (curTimeMills - START_STAMP) << TIMESTAMP_LEFT //时间戳部分-->获取最高部分的数据
                 | dataCenterId << DATA_CENTER_LEFT            //数据中心部分
                 | machineId << MACHINE_LEFT                   //机器标识部分
                 | sequence;                                   //序列号部分
