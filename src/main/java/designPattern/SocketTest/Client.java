@@ -30,7 +30,7 @@ public class Client {
                 String sendInfo = scanner.next();
                 // 一定要加 \n 表示结束此行输入,否则无法正常消息传输
                 bw.write(sendInfo + "\n");
-                bw.flush();
+//                bw.flush();
                 String serverInfo = br.readLine();
                 System.out.println("服务器说: " + serverInfo);
             }

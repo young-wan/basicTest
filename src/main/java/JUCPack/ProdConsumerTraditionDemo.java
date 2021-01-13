@@ -1,5 +1,6 @@
 package JUCPack;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -56,11 +57,11 @@ public class ProdConsumerTraditionDemo {
     public static void main(String[] args) {
         System.out.println(Runtime.getRuntime().availableProcessors());
         MyData myData = new MyData();
-        try {
-            myData.wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            myData.wait();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         new Thread(() -> {
             for (int i = 1; i <= 5; i++) {
                 myData.increment();

@@ -49,7 +49,12 @@ public class ReferenceDemo {
         System.out.println(phantomReference.get());
         System.out.println(referenceQueue.poll());
 
+        o1 = null;
+        System.gc();
         System.out.println("=========================");
+        System.out.println(o1);
+        System.out.println(phantomReference.get());
+        System.out.println(referenceQueue.poll());
     }
 
     private static void weakMap() {
@@ -76,6 +81,7 @@ public class ReferenceDemo {
         o1 = null;
         System.gc();
         System.out.println(o1);
+        System.out.println("");
         System.out.println(weakReference.get());
     }
 

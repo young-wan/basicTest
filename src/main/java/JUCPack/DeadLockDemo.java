@@ -1,6 +1,9 @@
 package JUCPack;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @title: demo
@@ -47,4 +50,13 @@ public class DeadLockDemo {
         new Thread(new MyLockData(lockB, lockA), "Thread-B").start();
     }
 
+}
+
+class Demo {
+
+    public static void main(String[] args) {
+        Lock lock = new ReentrantLock();
+        Condition condition1 = lock.newCondition();
+        Condition condition2 = lock.newCondition();
+    }
 }

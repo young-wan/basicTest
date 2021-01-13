@@ -33,15 +33,19 @@ public class Server {
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                 String clientInfo = br.readLine();
-                String sendInfo = scanner.next();
-                if (StringUtils.isNotBlank(sendInfo)) {
-                    // 一定要加 \n 表示结束此行输入,否则无法正常消息传输
-                    bw.write(sendInfo + "\n");
-                    bw.flush();
-                }
                 if (StringUtils.isNotBlank(clientInfo)) {
                     System.out.println("客户端说: " + clientInfo);
                 }
+//                String sendInfo = scanner.next();
+//                if (StringUtils.isNotBlank(sendInfo)) {
+//                    // 一定要加 \n 表示结束此行输入,否则无法正常消息传输
+//                    bw.write(sendInfo + "\n");
+//                    bw.flush();
+//                }
+
+                // 一定要加 \n 表示结束此行输入,否则无法正常消息传输
+                bw.write(clientInfo + "\n");
+//                bw.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();

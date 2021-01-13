@@ -14,8 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date: Created at 2020/02/20 14:22
  */
 public class ThreadPoolDemo {
+    private static volatile Boolean flag = true;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Integer count = Runtime.getRuntime().availableProcessors();
         System.out.println(count);
         AtomicInteger atomicInteger = new AtomicInteger();
@@ -31,8 +32,14 @@ public class ThreadPoolDemo {
 
 
         try {
-            for (int i = 1; i <= 30; i++) {
+            for (int i = 1; i <= 10; i++) {
+                int finalI = i;
                 threadPool.execute(() -> {
+                    try {
+                        Thread.sleep(finalI * 1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println(Thread.currentThread().getName() + "\t 处理业务" + atomicInteger.incrementAndGet());
                 });
             }
@@ -40,7 +47,15 @@ public class ThreadPoolDemo {
 
             e.printStackTrace();
         } finally {
-            threadPool.shutdown();
+            while (flag) {
+                System.out.printf("isTerminated %s \n",threadPool.isTerminated());
+                threadPool.shutdown();
+                if (threadPool.isTerminated()) {
+                    flag = false;
+                    System.out.printf("isTerminated %s \n",threadPool.isTerminated());
+                    System.out.println("shutdown=========");
+                }
+            }
         }
     }
 

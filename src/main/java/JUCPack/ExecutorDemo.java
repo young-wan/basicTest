@@ -11,9 +11,38 @@ import java.util.concurrent.Executors;
  */
 public class ExecutorDemo {
     public static void main(String[] args) {
-//        ExecutorService threadPool = Executors.newCachedThreadPool();
-//        ExecutorService threadPool = Executors.newFixedThreadPool(5);
-        ExecutorService threadPool = Executors.newSingleThreadExecutor();
+        /**
+         * ThreadPoolExecutor(int corePoolSize,
+         *                               int maximumPoolSize,
+         *                               long keepAliveTime,
+         *                               TimeUnit unit,
+         *                               BlockingQueue<Runnable> workQueue,
+         *                               ThreadFactory threadFactory,
+         *                               RejectedExecutionHandler handler) {
+         */
+
+        /**
+         * new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());
+         */
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+
+        /**
+         * super(corePoolSize, Integer.MAX_VALUE, 0, NANOSECONDS, new DelayedWorkQueue());
+         */
+        ExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(2);
+
+        /**
+         * new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+         */
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+
+        /**
+         * (new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>()));
+         */
+        ExecutorService singleTreadPool = Executors.newSingleThreadExecutor();
+
+        ExecutorService threadPool = Executors.newFixedThreadPool(5);
+
         //模拟10个用户来办理业务 没有用户就是来自外部的请求线程.
         try {
             for (int i = 1; i <= 20; i++) {
