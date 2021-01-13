@@ -19,7 +19,7 @@ public class TestDemo {
     }
 
     public static int test(int cap) {
-        int n = cap - 1;
+        int n = cap - 111;
         System.out.println(Integer.toBinaryString(n));
         n |= n >>> 1;
         System.out.println(Integer.toBinaryString(n));
