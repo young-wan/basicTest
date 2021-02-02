@@ -1,4 +1,3 @@
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -14,8 +13,8 @@ public class TestDemo {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public static void main(String[] args) throws InterruptedException {
-        System.out.println(BigDecimal.valueOf((Math.pow(2, 32) * 0.618)).intValue());
+    public static void main(String[] args) {
+
     }
 
     public static int test(int cap) {
