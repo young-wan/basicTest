@@ -29,4 +29,14 @@ public enum Property {
         this.propId = propId;
         this.propName = propName;
     }
+
+    public static Property getById(Integer propId) {
+        Property[] values = Property.values();
+        for (Property property : values) {
+            if (property.propId == propId) {
+                return property;
+            }
+        }
+        return null;
+    }
 }

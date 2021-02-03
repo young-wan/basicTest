@@ -1,5 +1,9 @@
 package gdzz;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * @Author young
  * @Date 2021/2/2 14:52
@@ -134,12 +138,45 @@ public enum Combine {
     CB_126(Equip.QI_SHI.eId, Position.NECKLACE.posId),
     ;
 
-    private Integer eId;
+    public Integer eId;
 
-    private Integer posId;
+    public Integer posId;
+
+    public Integer geteId() {
+        return eId;
+    }
+
+    public Integer getPosId() {
+        return posId;
+    }
 
     Combine(Integer eId, Integer posId) {
         this.eId = eId;
         this.posId = posId;
+    }
+
+
+    public static List<Combine> getListByEId(Integer eId) {
+        List<Combine> list = new ArrayList<>();
+        Combine[] values = Combine.values();
+        for (Combine value : values) {
+            if (value.eId.equals(eId)) {
+                list.add(value);
+            }
+        }
+        return list;
+    }
+
+
+    public static List<Combine> getListByPosId(Integer posId, Integer low, Integer high) {
+        List<Combine> list = new ArrayList<>();
+        Combine[] values = Combine.values();
+        for (Combine value : values) {
+            if (value.posId.equals(posId) && Objects.requireNonNull(Equip.getById(value.eId)).level <= high &&
+                    Objects.requireNonNull(Equip.getById(value.eId)).level >= low) {
+                list.add(value);
+            }
+        }
+        return list;
     }
 }

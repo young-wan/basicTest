@@ -1,5 +1,11 @@
 package gdzz;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 /**
  * @Author young
  * @Date 2021/2/2 15:56
@@ -113,10 +119,58 @@ public enum Effect {
 
     private Integer data;
 
+    public Integer geteId() {
+        return eId;
+    }
+
+    public Integer getSum() {
+        return sum;
+    }
+
+    public Integer getPropId() {
+        return propId;
+    }
+
+    public Integer getData() {
+        return data;
+    }
+
     Effect(Integer eId, Integer sum, Integer propId, Integer data) {
         this.eId = eId;
         this.sum = sum;
         this.propId = propId;
         this.data = data;
+    }
+
+    public static List<Effect> getListByMap(Collection<Combine> combines) {
+        Map<Integer, List<Combine>> collect = combines.stream().collect(Collectors.groupingBy(Combine::geteId));
+        List<Effect> res = new ArrayList<>();
+        for (Integer eId : collect.keySet()) {
+            res.addAll(getDetailEffect(eId, collect.get(eId).size()));
+        }
+        return res;
+    }
+
+    private static List<Effect> getDetailEffect(Integer eId, Integer sum) {
+        List<Effect> list = getListByEId(eId);
+        List<Effect> res = new ArrayList<>();
+        for (Effect effect : list) {
+            if (effect.sum <= sum) {
+                res.add(effect);
+            }
+        }
+        return res;
+    }
+
+
+    public static List<Effect> getListByEId(Integer eId) {
+        List<Effect> list = new ArrayList<>();
+        Effect[] values = Effect.values();
+        for (Effect value : values) {
+            if (value.eId.equals(eId)) {
+                list.add(value);
+            }
+        }
+        return list;
     }
 }

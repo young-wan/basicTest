@@ -1,6 +1,7 @@
 package gdzz;
 
-import lombok.Data;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author young
@@ -49,5 +50,15 @@ public enum Equip {
         this.eId = eId;
         this.eName = eName;
         this.level = level;
+    }
+
+    public static Equip getById(Integer eId) {
+        Equip[] values = Equip.values();
+        for (Equip value : values) {
+            if (value.eId.equals(eId)) {
+                return value;
+            }
+        }
+        return null;
     }
 }
