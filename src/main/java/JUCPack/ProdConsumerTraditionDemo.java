@@ -16,11 +16,12 @@ class MyData {
     private Lock lock = new ReentrantLock();
     private Condition condition = lock.newCondition();
 
-
     public void increment() {
+        System.out.println("生产者： increment");
         try {
             lock.lock();
             while (number != 0) {
+                System.out.println("生产者： await");
                 condition.await();
             }
             number++;
@@ -29,14 +30,17 @@ class MyData {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
+            System.out.println("生产者： increment---unlock\n");
             lock.unlock();
         }
     }
 
     public void decrement() {
+        System.out.println("消费者者： decrement");
         try {
             lock.lock();
             while (number == 0) {
+                System.out.println("消费者者： await");
                 condition.await();
             }
             number--;
@@ -45,6 +49,7 @@ class MyData {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
+            System.out.println("消费者者： decrement---unlock \n");
             lock.unlock();
         }
     }
